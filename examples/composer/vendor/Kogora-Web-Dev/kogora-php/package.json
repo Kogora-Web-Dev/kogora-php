@@ -1,0 +1,14 @@
+{
+    "name": "Kogora-Web-Dev/kogora-php",
+	"description" : "Kogora PHP library.",
+	"homepage" : "http://kogora.com",
+	"keywords" : ["kogora", "php"],
+	"author" : "Eric Mugerwa <eric@kogora.com>",
+	"contributors" : [],
+	"dependencies" : [],
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url":  "https://github.com/Kogora-Web-Dev/kogora-php.git"
+    }
+}

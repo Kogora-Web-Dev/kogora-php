@@ -1,0 +1,102 @@
+[
+    {
+        "name": "raveren/kint",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/raveren/kint.git",
+            "reference": "593b1c3af298204cf92780ba62985e479fb62b74"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/raveren/kint/zipball/593b1c3af298204cf92780ba62985e479fb62b74",
+            "reference": "593b1c3af298204cf92780ba62985e479fb62b74",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "time": "2014-09-08 13:50:01",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.9-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Kint.class.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Rokas Šleinius",
+                "homepage": "https://github.com/raveren"
+            },
+            {
+                "name": "Contributors",
+                "homepage": "https://github.com/raveren/kint/contributors"
+            }
+        ],
+        "description": "Kint - debugging helper for PHP developers",
+        "homepage": "https://github.com/raveren/kint",
+        "keywords": [
+            "debug",
+            "kint",
+            "php"
+        ]
+    },
+    {
+        "name": "Kogora-Web-Dev/kogora-php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Kogora-Web-Dev/kogora-php.git",
+            "reference": "e8077e490d39d168dd36fa35f7b5389ba2818190"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Kogora-Web-Dev/kogora-php/zipball/e8077e490d39d168dd36fa35f7b5389ba2818190",
+            "reference": "e8077e490d39d168dd36fa35f7b5389ba2818190",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "raveren/kint": "0.9.*@dev"
+        },
+        "time": "2014-12-26 15:09:52",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Kogora\\Config\\": "src/config/",
+                "Kogora\\Debugger\\": "src/debugger/"
+            },
+            "files": [
+                "src/Kogora.class.php",
+                "src/function/html.php",
+                "src/function/html2.php"
+            ]
+        },
+        "authors": [
+            {
+                "name": "Eric Mugerwa",
+                "email": "eric@kogora.com",
+                "homepage": "http://kogora.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Kogora PHP library.",
+        "support": {
+            "source": "https://github.com/Kogora-Web-Dev/kogora-php/tree/master",
+            "issues": "https://github.com/Kogora-Web-Dev/kogora-php/issues"
+        }
+    }
+]
