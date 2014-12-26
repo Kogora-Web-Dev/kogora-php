@@ -29,7 +29,7 @@
 
 class Debugger{
 
-
+	const ENABLED = true;
 	protected static $_firstRun = true;
 
 	/**
@@ -41,7 +41,8 @@ class Debugger{
 	public function __construct($enabled = true, $options = NULL){
 		if(!$enabled){
 			// to disable all output
-			\Kint::enabled(false);
+			self::ENABLED = false;
+			// \Kint::enabled(false);
 		}
 		// vendor dir
 		$vendor_dir = dirname(dirname(dirname(dirname(dirname(__File__)))));
@@ -54,20 +55,23 @@ class Debugger{
 	 * @param bool
 	 */
 	public function enable_output($enable){
-		\Kint::enabled($enable);
+		self::ENABLED = $enable;
+		// \Kint::enabled($enable);
 	}
 	/**
 	 * Print server information
 	 */
 	public function server(){
-		\Kint::dump($_SERVER);
-		/*
-		\Kint::dump( $_SERVER );
-		// or, even easier, use a shorthand:
-		\d( $_SERVER );
-		// or, to seize execution after dumping use dd();
-		\dd( $_SERVER ); // same as d( $_SERVER ); die;
-		*/
+		if(self::ENABLED){
+			\Kint::dump($_SERVER);
+			/*
+			\Kint::dump( $_SERVER );
+			// or, even easier, use a shorthand:
+			\d( $_SERVER );
+			// or, to seize execution after dumping use dd();
+			\dd( $_SERVER ); // same as d( $_SERVER ); die;
+			*/
+		}
 	}
 	public static function enable($name = NULL){
 		echo 'enabled firebug';
@@ -81,24 +85,28 @@ class Debugger{
 	 * @return bool
 	 */
 	public static function pprint($arr, $name = NULL){
-		if($name){
-			echo '<span class=debugger-title>'.$name.':</span>';
+		if(self::ENABLED){
+			if($name){
+				echo '<span class=debugger-title>'.$name.':</span>';
+			}
+			\Kint::dump($arr);
+			return true;
+			/*
+			echo '<pre>';
+				print_r($arr);
+			echo '</pre>';
+			*/
 		}
-		\Kint::dump($arr);
-		return true;
-		/*
-		echo '<pre>';
-			print_r($arr);
-		echo '</pre>';
-		*/
 	}
 	/**
 	 * Append scripts and styles on __destruct
 	 */
 	public function __destruct() {
-		print "Destroying Debugger\n";
-		// echo '<script>alert(\'boo\')</script>';
-		echo '<style>.debugger-title{clear: both; display: block; padding: 3px 5px; margin: 5px 0; font: bold 11px Arial; color: #FFF; background: #279C17; border-radius: 3px}</style>';
+		if(self::ENABLED){
+			print "Destroying Debugger\n";
+			// echo '<script>alert(\'boo\')</script>';
+			echo '<style>.debugger-title{clear: both; display: block; padding: 3px 5px; margin: 5px 0; font: bold 11px Arial; color: #FFF; background: #279C17; border-radius: 3px}</style>';
+		}
 	}
 }
 

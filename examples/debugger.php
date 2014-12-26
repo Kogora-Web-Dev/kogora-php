@@ -2,8 +2,13 @@
 /** 
  * More examples than in documentation.
  */
-$loader = require(dirname(__FILE__).'/composer/vendor/autoload.php');
+define('KOGORA_DIR_SRC', dirname(dirname(__FILE__)).'/src');
 
+$Kogora->composer_autoload();//composer autoload
+// $Kogora->direct_load(KOGORA_DIR_SRC.'/debugger/debugger.php');
+
+
+// Test debugger
 use Kogora\Debugger;
 $b = new Debugger\Debugger();
 // $fb->enable('firebug');
