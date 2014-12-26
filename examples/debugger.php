@@ -2,10 +2,12 @@
 /** 
  * More examples than in documentation.
  */
+define('KOGORA_DIR_COMPOSER', dirname(__FILE__).'/composer/vendor');
+$loader = require(KOGORA_DIR_COMPOSER.'/autoload.php');// composer loader
 define('KOGORA_DIR_SRC', dirname(dirname(__FILE__)).'/src');
-
-$Kogora->composer_autoload();//composer autoload
-// $Kogora->direct_load(KOGORA_DIR_SRC.'/debugger/debugger.php');
+hello();
+Kogora::composer_autoload();//composer autoload
+// Kogora::direct_load(KOGORA_DIR_SRC.'/debugger/debugger.php');
 
 
 // Test debugger

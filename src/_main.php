@@ -1,10 +1,9 @@
 <?
-
 /** 
  * Define Kogora directory constants.
  */
 define('KOGORA_DIR', dirname( __FILE__ ) . '/');
-define('KOGORA_DIR_COMPOSER', dirname(__FILE__).'/composer/vendor';
+define('KOGORA_DIR_COMPOSER', dirname(__FILE__).'/composer/vendor');
 
 /** 
  * Define Kogora configuration.

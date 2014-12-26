@@ -59,19 +59,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Kogora-Web-Dev/kogora-php.git",
-            "reference": "e8077e490d39d168dd36fa35f7b5389ba2818190"
+            "reference": "3f3e4602bda8fe829e913de14d1eba0d9ffaf331"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Kogora-Web-Dev/kogora-php/zipball/e8077e490d39d168dd36fa35f7b5389ba2818190",
-            "reference": "e8077e490d39d168dd36fa35f7b5389ba2818190",
+            "url": "https://api.github.com/repos/Kogora-Web-Dev/kogora-php/zipball/3f3e4602bda8fe829e913de14d1eba0d9ffaf331",
+            "reference": "3f3e4602bda8fe829e913de14d1eba0d9ffaf331",
             "shasum": ""
         },
         "require": {
             "php": ">=5.4.0",
             "raveren/kint": "0.9.*@dev"
         },
-        "time": "2014-12-26 15:09:52",
+        "time": "2014-12-26 15:36:23",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
