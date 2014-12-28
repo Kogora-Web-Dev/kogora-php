@@ -12,14 +12,8 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-        	"Kogora\\Config\\": "src/config/",
-        	"Kogora\\Debugger\\": "src/debugger/"
-        	},
         "files": [
-            "src/Kogora.class.php",
-            "src/function/html.php",
-            "src/function/html2.php"
+            "src/Kogora.class.php"
         ]
     },
     "require": {

@@ -29,7 +29,7 @@
 
 class Debugger{
 
-	const ENABLED = true;
+	protected $enabled = true;
 	protected static $_firstRun = true;
 
 	/**
@@ -41,13 +41,13 @@ class Debugger{
 	public function __construct($enabled = true, $options = NULL){
 		if(!$enabled){
 			// to disable all output
-			self::ENABLED = false;
+			$this->enabled = false;
 			// \Kint::enabled(false);
 		}
 		// vendor dir
-		$vendor_dir = dirname(dirname(dirname(dirname(dirname(__File__)))));
+		// $vendor_dir = dirname(dirname(dirname(dirname(dirname(__File__)))));
 		// require kint
-		require_once($vendor_dir.'/raveren/kint/Kint.class.php');
+		require_once(KOGORA_VENDOR_DIR.'/raveren/kint/Kint.class.php');
 
 	}
 	/**
@@ -55,14 +55,14 @@ class Debugger{
 	 * @param bool
 	 */
 	public function enable_output($enable){
-		self::ENABLED = $enable;
+		$this->enabled = $enable;
 		// \Kint::enabled($enable);
 	}
 	/**
 	 * Print server information
 	 */
 	public function server(){
-		if(self::ENABLED){
+		if($this->enabled){
 			\Kint::dump($_SERVER);
 			/*
 			\Kint::dump( $_SERVER );
@@ -80,16 +80,18 @@ class Debugger{
 		echo 'output sent to stdout';
 	}
 	/**
-	 * Pretty print array
+	 * Dump pretty print array
 	 * @param array
 	 * @return bool
 	 */
-	public static function pprint($arr, $name = NULL){
-		if(self::ENABLED){
+	public function debug(&$var, $name = NULL){
+		if($this->enabled){
+			// alert
 			if($name){
-				echo '<span class=debugger-title>'.$name.':</span>';
+				self::info($name);
 			}
-			\Kint::dump($arr);
+			// kint dump
+			\Kint::dump($var);
 			return true;
 			/*
 			echo '<pre>';
@@ -99,13 +101,54 @@ class Debugger{
 		}
 	}
 	/**
+	 * Info Alert
+	 * @param string type e.g: info/alert
+	 * @param string text
+	 * @return bool
+	 */
+	public function info($text = ''){
+		$this->_alert('info', $text);
+	}
+	/**
+	 * Alert
+	 * @param string type e.g: info/alert
+	 * @param string text
+	 * @return bool
+	 */
+	public function _alert($type, $text = ''){
+		$class = ' debugger-'.$type;
+		echo '<span class="debugger-alert'.$class.'">'.$text.'</span>';//'.$type.': 
+	}
+	/**
 	 * Append scripts and styles on __destruct
+	 * @source icons: https://www.iconfinder.com/icons/127891/alert_attention_bubble_chat_comment_comments_error_exclamation_message_talk_warning_icon#size=24
+	 * @link base64 converter http://www.base64-image.de/
 	 */
 	public function __destruct() {
-		if(self::ENABLED){
-			print "Destroying Debugger\n";
+		if($this->enabled){
 			// echo '<script>alert(\'boo\')</script>';
-			echo '<style>.debugger-title{clear: both; display: block; padding: 3px 5px; margin: 5px 0; font: bold 11px Arial; color: #FFF; background: #279C17; border-radius: 3px}</style>';
+			echo '<style type="text/css">
+			.debugger-alert{
+				clear: both; 
+				display: block; 
+				min-height: 16px;
+				overflow: hidden;
+				padding: 7px 7px 3px 35px; 
+				margin: 5px 0; 
+				font: bold 12px "Courier New", Courier, monospace; 
+				color: #FFF; 
+				background-color: #279C17; 
+				background-position: 5px 5px;
+				background-repeat: no-repeat;
+				border-radius: 3px
+				}
+			.debugger-info{
+				border: 1px solid #3724AD;
+				border-color: #3724AD;
+				background-color: #6253C2;
+				background-image: url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAGISURBVDiNjZM/SxxRFMXP7piVBGXHQrAUwSYIfgALCQhphCCCWE4hCBLSBKsUNloJIaBfIEVilJVsZbMo/kMQEQY1ga10sTDIFruwwqz63s9ixzBrZp0cuMW799xz73uPI0BPwgPyRGEt9u4+H9aa+NGDC/jEwVquNgrUzkuEHPepgAtUYptDVPxTdkfHMUFAyHWjAvGTIzBBwHq2h+KX5ceUDygtyZM0qARc5vKqV691vbXzmBqU5AnYTpp+/vU7q20drGU6KX1bi5a29VzjbaXK/rsJVlOv2B+bpHxw+A+nrdXKwdUf7Y1NqKOvT29PjpQdeB1PbDX918Iil7mfSbejSeCudsN97QaA6u9iYjNAWtLfZ62Xy9ocHtHZ3Lyc9kzSx0jSjgDPhmrWGApDb1jRC36kXnI0NYMJ6o1aTACeAFlrfWsbqeMPH8l1dePPfqJ2UcJa2yp8QClAxhhX0oXjONni5yWlMxn1v5+WJBlj4lavSup1HKfyf2ZqRqyZnrdzA7F2fgDTdNacij4HhQAAAABJRU5ErkJggg==\');
+				}
+			</style>';
 		}
 	}
 }

@@ -1,0 +1,12 @@
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:Kogora-Web-Dev/kogora-php.git"
+        }
+    ],
+    "require": { 
+        "Kogora-Web-Dev/kogora-php": "dev-master"
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,30 @@
+{
+    "name": "Kogora-Web-Dev/kogora-php",
+    "description": "Kogora PHP library.",
+    "type": "library",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Eric Mugerwa",
+            "email":  "eric@kogora.com",
+            "homepage":  "http://kogora.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+        	"Kogora\\Config\\": "src/config/",
+        	"Kogora\\Debugger\\": "src/debugger/"
+        	},
+        "files": [
+            "src/Kogora.class.php",
+            "src/function/html.php",
+            "src/function/html2.php"
+        ]
+    },
+    "require": {
+    	"php": ">=5.4.0",
+    	"raveren/kint": "0.9.*@dev"
+    },
+    "notify-batch": "http://www.edu.kogora.com/files/downloads/"
+}
